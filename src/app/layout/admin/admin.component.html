@@ -1,0 +1,15 @@
+<mat-drawer-container class="container" autosize>
+    <mat-drawer opened #drawer class="sidenav" mode="side">
+      <div class="container-fluid">
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+      <app-sidebar></app-sidebar>
+      </div>
+      </div>
+    </mat-drawer>
+    <app-header [isDrawer]="true" [drawer]="drawer"></app-header>
+    <app-footer></app-footer>
+    <div class="sidenav-content">
+      <app-content></app-content>
+    </div>
+  </mat-drawer-container>

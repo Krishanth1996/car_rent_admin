@@ -1,0 +1,34 @@
+mat-form-field {
+  margin-right: 12px;
+}
+
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fail{
+  background: rgba(0, 128, 0, 0.521);
+}
+.success{
+  background: rgba(0, 128, 0, 0.521);
+}
+.mat-snack-bar-container{
+  background: rgba(0, 128, 0, 0.521);
+}
+
+mat-form-field {
+  margin-right: 12px;
+}
+
+.success{
+  mat-icon{
+    color: green;
+   }
+}
+.fail{
+  mat-icon{
+    color: red;
+   }
+}

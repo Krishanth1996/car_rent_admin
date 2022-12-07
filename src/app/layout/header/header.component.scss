@@ -1,0 +1,25 @@
+.app-header {
+    padding: 15px;
+    justify-content: space-between;
+    color: #000;
+    display: flex;
+    align-items: center;;
+    box-shadow: -2px -2px 14px 4px rgba(0, 0, 0, 0.18), 0 1px 2px rgb(255 255 255 / 24%);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    .user-menu{
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        display: inline-block;
+        overflow: hidden;
+
+        img{
+            height: 100px;
+        }
+    }
+
+    .button-expand{
+        cursor: pointer;
+    }
+}

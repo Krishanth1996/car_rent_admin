@@ -1,0 +1,64 @@
+<div class="add-customer">
+  <!-- <div class="p-2">
+    <div class="btn-menu d-flex justify-content-start">
+      <a [routerLink]="['/admin/customer/list']"><button class="btn btn-primary btn-sm btn-block">
+            Back
+        </button></a>
+    </div>
+  </div> -->
+  <!-- <div> -->
+    <form class="form-group" [formGroup]="customerForm" (ngSubmit)="onFormSubmit()">
+      <div class="row p-2">
+        <div class="col-xs-12 col-sm-6 col-xl-6">
+          <div class="form-group">
+            <label for="first_name">First Name</label>
+            <input type="text" class="form-control" id="first_name" formControlName="first_name" placeholder="First Name">
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-xl-6">
+          <div class="form-group">
+            <label for="last_name">Last Name</label>
+            <input type="text" class="form-control" id="last_name" formControlName="last_name" placeholder="Last Name">
+          </div>
+        </div>
+      </div>
+      <div class="row p-2">
+        <div class="col-xs-12 col-sm-4 col-xl-4">
+          <div class="form-group">
+            <label for="license_card_number">License Number</label>
+            <input type="text" class="form-control " id="license_card_number" formControlName="license_card_number" placeholder="License Number">
+            <div class="pt-2">
+              <input type="file" (change)="onFileChange($event,'license_card_image')" class="form-control-file" formControlName="license_card_image">
+            </div>
+          </div>
+          
+        </div>
+        <div class="col-xs-12 col-sm-4 col-xl-4">
+          <div class="form-group">
+            <label for="id_card_number">ID Number</label>
+            <input type="text" class="form-control " id="id_card_number" formControlName="id_card_number" placeholder="ID Number">
+            <div class="pt-2">
+              <input  (change)="onFileChange($event,'id_card_image')" type="file" class="form-control-file"  formControlName="id_card_image">
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-xl-4">
+          <div class="form-group">
+            <label for="utility_bill_image">Utility Bill</label>
+            <div class="pt-2">
+              <input type="file" (change)="onFileChange($event,'utility_bill_image')" class="form-control-file"   formControlName="utility_bill_image" >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row p-2">
+        <div class="col-xs-12 col-sm-12 col-xl-12 text-center">
+          <button type="submit" class="btn btn-success btn-sm btn-block">Save Customer</button>
+        </div>
+      </div>
+    </form> 
+  <!-- </div> -->
+</div>
+
+
+  

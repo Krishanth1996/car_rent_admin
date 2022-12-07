@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { 
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-color: #f0f2f5!important;
+}
+img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.mat-snack-bar-container {
+    background: #333333;
+    color: red;
+}
+
+.success{
+    background: #ffffffce;
+    color: green;
+}
+.fail{
+    background: #333333;
+    color: red;
+}
+.btn-menu{
+    span{
+        cursor: pointer;
+    }
+}
+
+
+
+// /* Importing Bootstrap SCSS file. */
+// @import '~bootstrap/scss/bootstrap';
+
+// /* Importing Bootstrap SCSS file. */
+// @import '~bootstrap/scss/bootstrap';

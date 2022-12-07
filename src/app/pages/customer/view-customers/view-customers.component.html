@@ -1,0 +1,68 @@
+<div class="view-customer">
+  <!-- <div class="p-2">
+    <div class="btn-menu d-flex justify-content-start">
+        <a [routerLink]="['add']"><button class="btn btn-primary btn-sm btn-block">
+            Add Customer
+        </button></a>
+    </div>
+  </div> -->
+  <app-add-customer></app-add-customer> 
+    <table
+      *ngIf="customers"
+      id="customer_list"
+      class="display row-border"
+      style="color: black;"
+      datatable
+      [dtOptions]="dtOptions"
+    >
+      <thead>
+        <tr class="th-center">
+          <th>#</th>
+          <th>Name</th>
+          <th>Contact</th>
+          <th>ID</th>
+          <th>License</th>
+          <th>Verification</th>
+          <th>Status</th>
+          <th class="text-center">Images</th>
+          <th>Created At</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of customers">
+          <td>{{item.id}}</td>
+          <td>{{item.first_name}}</td>
+          <td>{{item.contact_mobile}}</td>
+          <td>{{item.id_card_number}}</td>
+          <td>{{item.license_card_number}}</td>
+          <td>{{item.is_verified ? 'Verified' : 'Unverified'}}</td>
+          <td>{{item.is_deleted ? 'Inactive' : 'Active'}}</td>
+          <td class="btn-menu d-flex justify-content-between">
+            <span *ngIf="item.id_card_image" class="material-icons text-warning" (click)="_common.openImageDialog(item.id_card_image,'ID Image')">
+                photo_camera
+              </span>
+            <span *ngIf="item.license_card_image" class="material-icons text-warning" (click)="_common.openImageDialog(item.license_card_image,'License Image')">
+                photo_camera
+              </span>
+            <span *ngIf="item.utility_bill_image" class="material-icons text-warning" (click)="_common.openImageDialog(item.utility_bill_image,'Utility Image')">
+                photo_camera
+              </span>
+          </td>
+          <td>{{item.created_at | date}}</td>
+          <td class="d-flex justify-content-between btn-menu">
+            <span class="material-icons text-success" >
+              visibility
+            </span>
+            <span class="material-icons text-primary">
+              edit
+            </span>
+            <span class="material-icons text-danger">
+                delete
+            </span>
+                
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
