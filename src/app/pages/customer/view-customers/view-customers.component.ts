@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Customer } from 'src/app/model/customer';
 import { CommonService } from 'src/app/services/common.service';
 import { CustomerService } from 'src/app/services/customer.service';
+import { AddCustomerComponent } from '../add-customer/add-customer.component';
 
 @Component({
   selector: 'app-view-customers',
@@ -11,10 +12,11 @@ import { CustomerService } from 'src/app/services/customer.service';
 export class ViewCustomersComponent implements OnInit  {
 
   customers: Customer[];
+  selectedCustomer:Customer;
   dtOptions: any;
 
   selectedImage:string;
-
+  @ViewChild(AddCustomerComponent) addCustomer: AddCustomerComponent;
   constructor(private _customerService:CustomerService, public _common:CommonService) {}
   
   ngOnInit(): void {
@@ -26,4 +28,21 @@ export class ViewCustomersComponent implements OnInit  {
       })
     }
 
+    deleteCustomer(id:any){
+      this._customerService.deleteCustomer(id).subscribe(data=>{
+        if(!data.isError){
+         this.customers=this.customers.filter(customer=>customer.id != id)
+        }
+      })
+    }
+
+    selectCustomer(customer:Customer){
+      this.selectedCustomer=customer;
+      this.addCustomer.setCustomer(customer);
+    }
+
+    clearCustomer(event:any){
+      this.selectedCustomer=undefined;
+      this.addCustomer.setCustomer(undefined)
+    }
   }

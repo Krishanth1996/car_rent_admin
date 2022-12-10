@@ -17,7 +17,7 @@ export class CommonService {
         title:"test"
       },
       dom: 'Bfrtip',
-      pageLength:20,
+      pageLength:15,
       lengthMenu:[5,10,20],
       buttons: [
         'copy',

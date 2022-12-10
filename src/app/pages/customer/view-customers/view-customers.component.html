@@ -1,12 +1,6 @@
 <div class="view-customer">
-  <!-- <div class="p-2">
-    <div class="btn-menu d-flex justify-content-start">
-        <a [routerLink]="['add']"><button class="btn btn-primary btn-sm btn-block">
-            Add Customer
-        </button></a>
-    </div>
-  </div> -->
-  <app-add-customer></app-add-customer> 
+
+  <app-add-customer (clearCustomerEvent)="clearCustomer($event)"></app-add-customer> 
     <table
       *ngIf="customers"
       id="customer_list"
@@ -54,10 +48,10 @@
             <span class="material-icons text-success" >
               visibility
             </span>
-            <span class="material-icons text-primary">
+            <span class="material-icons text-primary" (click)="selectCustomer(item)">
               edit
             </span>
-            <span class="material-icons text-danger">
+            <span class="material-icons text-danger" (click)="deleteCustomer(item.id)">
                 delete
             </span>
                 

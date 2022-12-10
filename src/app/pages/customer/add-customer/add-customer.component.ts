@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Customer } from 'src/app/model/customer';
 import { CommonService } from 'src/app/services/common.service';
 import { CustomerService } from 'src/app/services/customer.service';
 
@@ -9,8 +10,9 @@ import { CustomerService } from 'src/app/services/customer.service';
   styleUrls: ['./add-customer.component.scss']
 })
 export class AddCustomerComponent implements OnInit {
+  @Output() clearCustomerEvent = new EventEmitter<string>();
   constructor(public _common:CommonService,private _customerService:CustomerService) { }
-
+  customer:Customer
   customerForm = new FormGroup({
     first_name: new FormControl(),
     last_name: new FormControl(),
@@ -25,6 +27,17 @@ export class AddCustomerComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  setCustomer(customer:Customer){
+    this.customer=customer;
+    this.customerForm.patchValue({
+      first_name: customer.first_name,
+      last_name: customer.last_name,
+      license_card_number: customer.license_card_number,
+      id_card_number: customer.id_card_number,
+      contact_mobile: customer.contact_mobile,
+    })
+  }
+
   onFormSubmit(){
     const customerFormData = new FormData();
     customerFormData.append('license_card_image', this.customerForm.get('license_card_image').value);
@@ -35,10 +48,28 @@ export class AddCustomerComponent implements OnInit {
     customerFormData.append('license_card_number', this.customerForm.get('license_card_number').value);
     customerFormData.append('id_card_number', this.customerForm.get('id_card_number').value);
     customerFormData.append('contact_mobile', this.customerForm.get('contact_mobile').value);
+
+    if(this.customer){
+      this.updateCustomer();
+    }else{
+      this.createCustomer();
+    }
+  }
+
+  updateCustomer(){
+    this._customerService.updateCustomer(this.customerForm.value,this.customer.id).subscribe(data=>{
+      this.clearForm()   
+    })
+  }
+  createCustomer(){
     this._customerService.createCustomer(this.customerForm.value).subscribe(data=>{
       this.customerForm.reset();      
     })
-    
+  }
+
+  clearForm(){
+    this.customerForm.reset();
+    this.clearCustomerEvent.emit(undefined)
   }
 
   onFileChange(event:any,type:string){

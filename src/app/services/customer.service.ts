@@ -18,6 +18,15 @@ export class CustomerService {
   createCustomer(customerData:any){
     let url=this.path+"customer";
     return this.http.post<any>(url,customerData);
+  }
 
+  updateCustomer(customerData:any,id:any){
+    let url=this.path+`customer/${id}`;
+    return this.http.put<any>(url,customerData);
+  }
+
+  deleteCustomer(id:any){
+    let url=this.path+`customer/${id}`;
+    return this.http.delete<any>(url);
   }
 }
