@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ImageModalComponent } from '../components/image-modal/image-modal.component';
+import { ProfileModalComponent } from '../components/profile-modal/profile-modal.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private route: ActivatedRoute,
+    private router: Router
+    ) {}
   dtOptions: any;
   // dtOptions: DataTables.Settings = {};
 
@@ -51,6 +57,17 @@ export class CommonService {
       this.setStyle();
   }
 
+  openProfileDialog(profile:any,){
+      const dialogRef = this.dialog.open(ProfileModalComponent, {
+        data: profile
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        return result;
+      });
+  }
+
   setStyle(){
     let doc = document.getElementsByClassName("scrollable");
     doc[0].setAttribute("style", "overflow:auto;");
@@ -63,6 +80,12 @@ export class CommonService {
     }
     return null
 
+  }
+
+
+  //Routing
+  goToRoute(routeName:string="admin"){
+    this.router.navigate([routeName], {relativeTo:this.route});
   }
   
 }

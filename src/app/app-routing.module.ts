@@ -1,40 +1,53 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './layout/admin/admin.component';
-import { IndexPageComponent } from './pages/common/index-page/index-page.component';
-import { AddCustomerComponent } from './pages/customer/add-customer/add-customer.component';
 import { ViewCustomersComponent } from './pages/customer/view-customers/view-customers.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ViewVehicleComponent } from './pages/vehicle/view-vehicle/view-vehicle.component';
 
 const routes: Routes = [
   {
-    path:"admin",
+    path:"",
     component:AdminComponent,
     children:[
       {
+        path:"dashboard",
+        component:DashboardComponent,
+        // children:[
+        //   {
+        //     path:"list",
+        //     component:ViewCustomersComponent
+        //   },
+        //   {
+        //     path:"list/add",
+        //     component:AddCustomerComponent
+        //   }
+        // ]
+      },
+      {
         path:"customer",
-        component:IndexPageComponent,
-        children:[
-          {
-            path:"list",
-            component:ViewCustomersComponent
-          },
-          {
-            path:"list/add",
-            component:AddCustomerComponent
-          }
-        ]
+        component:ViewCustomersComponent,
+        // children:[
+        //   {
+        //     path:"list",
+        //     component:ViewCustomersComponent
+        //   },
+        //   {
+        //     path:"list/add",
+        //     component:AddCustomerComponent
+        //   }
+        // ]
+      },
+      {
+        path:"vehicle",
+        component:ViewVehicleComponent
       }
     ]
   },
   {
     path:"",
-    redirectTo:'/admin',
-    pathMatch: 'full'
-  },
-  {
-    path:"customer",
-    redirectTo:'customer/add',
+    redirectTo:'/dashboard',
     pathMatch: 'full'
   },
   { 

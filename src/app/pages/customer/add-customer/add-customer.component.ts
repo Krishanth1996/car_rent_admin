@@ -48,11 +48,10 @@ export class AddCustomerComponent implements OnInit {
     customerFormData.append('license_card_number', this.customerForm.get('license_card_number').value);
     customerFormData.append('id_card_number', this.customerForm.get('id_card_number').value);
     customerFormData.append('contact_mobile', this.customerForm.get('contact_mobile').value);
-
     if(this.customer){
       this.updateCustomer();
     }else{
-      this.createCustomer();
+      this.createCustomer(customerFormData);
     }
   }
 
@@ -61,8 +60,8 @@ export class AddCustomerComponent implements OnInit {
       this.clearForm()   
     })
   }
-  createCustomer(){
-    this._customerService.createCustomer(this.customerForm.value).subscribe(data=>{
+  createCustomer(customerFormData:any){
+    this._customerService.createCustomer(customerFormData).subscribe(data=>{
       this.customerForm.reset();      
     })
   }
@@ -90,7 +89,6 @@ export class AddCustomerComponent implements OnInit {
           license_card_image: this._common.setFile(event)
         });
         break;
-    
       default:
         break;
     }

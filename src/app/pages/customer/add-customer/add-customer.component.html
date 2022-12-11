@@ -1,16 +1,22 @@
 <div class="add-customer">
     <form class="form-group" [formGroup]="customerForm">
       <div class="row p-2">
-        <div class="col-xs-12 col-sm-6 col-xl-6">
+        <div class="col-xs-12 col-sm-4 col-xl-4">
           <div class="form-group">
             <label for="first_name">First Name</label>
             <input type="text" class="form-control" id="first_name" formControlName="first_name" placeholder="First Name">
           </div>
         </div>
-        <div class="col-xs-12 col-sm-6 col-xl-6">
+        <div class="col-xs-12 col-sm-4 col-xl-4">
           <div class="form-group">
             <label for="last_name">Last Name</label>
             <input type="text" class="form-control" id="last_name" formControlName="last_name" placeholder="Last Name">
+          </div>
+        </div>
+          <div class="col-xs-12 col-sm-4 col-xl-4">
+          <div class="form-group">
+            <label for="id_card_number">Contact Number</label>
+            <input type="number" class="form-control " id="contact_mobile" formControlName="contact_mobile" placeholder="Contact Number" >
           </div>
         </div>
       </div>
@@ -20,7 +26,8 @@
             <label for="license_card_number">License Number</label>
             <input type="text" class="form-control " id="license_card_number" formControlName="license_card_number" placeholder="License Number" >
             <div class="pt-2" >
-              <input type="file" (change)="onFileChange($event,'license_card_image')" class="form-control-file" formControlName="license_card_image">
+              <label class="btn btn-primary form-control-file" for="license_card_image">License Number</label>
+              <input type="file" (change)="onFileChange($event,'license_card_image')" id="license_card_image"  placeholder="license_card_image"  class="form-control-file d-none" required>
             </div>
           </div>
           
@@ -30,15 +37,17 @@
             <label for="id_card_number">ID Number</label>
             <input type="text" class="form-control " id="id_card_number" formControlName="id_card_number" placeholder="ID Number" >
             <div class="pt-2">
-              <input  (change)="onFileChange($event,'id_card_image')" type="file" class="form-control-file"  formControlName="id_card_image">
+              <label class="btn btn-primary form-control-file" for="id_card_image">ID Card</label>
+              <input  (change)="onFileChange($event,'id_card_image')" type="file" id="id_card_image" placeholder="id_card_image" class="form-control-file d-none" required>
             </div>
           </div>
         </div>
         <div class="col-xs-12 col-sm-4 col-xl-4" >
           <div class="form-group">
-            <label for="utility_bill_image">Utility Bill</label>
+            <!-- <label for="utility_bill_image">Utility Bill</label> -->
             <div class="pt-2">
-              <input type="file" (change)="onFileChange($event,'utility_bill_image')" class="form-control-file"   formControlName="utility_bill_image">
+              <label class="btn btn-primary form-control-file" for="utility_bill_image">Utility Bill</label>
+              <input type="file" (change)="onFileChange($event,'utility_bill_image')" id="utility_bill_image" placeholder="utility_bill_image"  class="form-control-file d-none" required>
             </div>
           </div>
         </div>

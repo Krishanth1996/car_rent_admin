@@ -1,5 +1,4 @@
 <div class="view-customer">
-
   <app-add-customer (clearCustomerEvent)="clearCustomer($event)"></app-add-customer> 
     <table
       *ngIf="customers"
@@ -54,7 +53,6 @@
             <span class="material-icons text-danger" (click)="deleteCustomer(item.id)">
                 delete
             </span>
-                
           </td>
         </tr>
       </tbody>

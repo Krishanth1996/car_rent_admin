@@ -24,7 +24,11 @@ import { IndexPageComponent } from './pages/common/index-page/index-page.compone
 import { ImageModalComponent } from './components/image-modal/image-modal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { AddVehicleComponent } from './pages/vehicle/add-vehicle/add-vehicle.component';
+import { ViewVehicleComponent } from './pages/vehicle/view-vehicle/view-vehicle.component';
+import { ProfileModalComponent } from './components/profile-modal/profile-modal.component';
+import { environment } from 'src/environments/environment';
+// import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,8 +45,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     ViewCustomersComponent,
     IndexPageComponent,
     ImageModalComponent,
+    AddVehicleComponent,
+    ViewVehicleComponent,
+    ProfileModalComponent,
   ],
   imports: [
+    // AgmCoreModule.forRoot({
+    //   apiKey: environment.mapsApiKey
+    // }),
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
@@ -50,7 +60,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     DataTablesModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,

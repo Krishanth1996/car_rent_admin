@@ -1,0 +1,57 @@
+<div class="view-vehicle">
+    <app-add-vehicle (clearVehicleEvent)="clearVehicle($event)"></app-add-vehicle>
+      <table
+        *ngIf="vehicle"
+        id="customer_list"
+        class="display row-border"
+        style="color: black;"
+        datatable
+        [dtOptions]="dtOptions"
+      >
+        <thead>
+          <tr class="th-center">
+            <th>#</th>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Number Plate</th>
+            <th>Transmission</th>
+            <th>Mileage</th>
+            <th>Insurance</th>
+            <th class="text-center">Extra</th>
+            <th>Created At</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of vehicle">
+            <td>{{item.id}}</td>
+            <td>{{item.brand+" "+item.name}}</td>
+            <td>{{item.brand}}</td>
+            <td>{{item.number_plate}}</td>
+            <td>{{item.gear_type}}</td>
+            <td>{{item.mileage}} L/Kms</td>
+            <td>{{item.insurance_type}}</td>
+            <td class="btn-menu d-flex justify-content-between">
+              <span *ngIf="item.owner_id" class="material-icons text-success" (click)="getSingleVehicleOwner(item.owner_id)">
+                manage_accounts
+                </span>
+              <span *ngIf="item.location_id" class="material-icons text-success" (click)="getSingleVehicleLocation(item.location_id)">
+                  share_location
+                </span>
+            </td>
+            <td>{{item.created_at | date}}</td>
+            <td class="d-flex justify-content-between btn-menu">
+              <span class="material-icons text-success" >
+                visibility
+              </span>
+              <span class="material-icons text-primary" (click)="selectVehicle(item)">
+                edit
+              </span>
+              <span class="material-icons text-danger" (click)="deleteVehicle(item.id)">
+                  delete
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
