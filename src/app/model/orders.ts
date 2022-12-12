@@ -1,0 +1,43 @@
+import { Image } from "./common";
+
+export interface Order{
+    id: number;
+    customer_id: number;
+    vehicle_id: number;
+    order_date: Date;
+    rent_start_time: Date;
+    rent_end_time: Date;
+    rent_start_km: Date;
+    rent_end_km: Date;
+    extra_charges: number;
+    is_completed: number;
+    is_deleted: number;
+    created_at: Date;
+    updated_at: Date;
+    first_name: string;
+    last_name: string;
+    license_card_number: string;
+    license_card_image: Image;
+    id_card_number: string;
+    id_card_image: Image;
+    id_card_image_location: string;
+    contact_mobile: string;
+    utility_bill_image: Image;
+    utility_bill_image_location: string;
+    is_verified: number;
+    registered_date: Date;
+    name: string;
+    brand: string;
+    gear_type: string;
+    mileage: number;
+    number_plate: string;
+    fuel_type: string;
+    insurance_type: string;
+    owner_id: number;
+    location_id: number;
+    is_active: number;
+    is_call_verified: number;
+    is_visit_verified: number;
+    is_available: number;
+    is_with_driver: number;
+}

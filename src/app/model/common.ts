@@ -31,7 +31,7 @@ export enum FUEL_TYPE{
 }
 
 export interface Locations{
-    id:string,
+    location_id:string,
     latitude:string,
     longitude:string
     is_deleted:boolean

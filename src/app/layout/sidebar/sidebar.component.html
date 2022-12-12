@@ -5,7 +5,7 @@
     <mat-divider></mat-divider>
     <div class="nav-menu">
             <mat-list>
-                <a [routerLink]="['/dashboard']">
+                <a [routerLink]="['dashboard']">
                     <mat-list-item>Dashboard</mat-list-item>
                 </a>
                 <a [routerLink]="['customer']">
@@ -14,8 +14,11 @@
                 <a [routerLink]="['vehicle']">
                     <mat-list-item>Vehicles</mat-list-item>
                 </a>
-                <a href="">
-                    <mat-list-item>Settings</mat-list-item>
+                <a [routerLink]="['orders']">
+                    <mat-list-item>Orders</mat-list-item>
+                </a>
+                <a [routerLink]="['payments']">
+                    <mat-list-item>Payments</mat-list-item>
                 </a>
             </mat-list>
     </div>

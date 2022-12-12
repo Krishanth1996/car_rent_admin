@@ -1,0 +1,59 @@
+<!-- <div class="order">
+    <table
+    *ngIf="orders"
+    id="customer_list"
+    class="display row-border"
+    style="color: black;"
+    datatable
+    [dtOptions]="dtOptions"
+    >
+    <thead>
+        <tr class="th-center">
+        <th>#</th>
+        <th>Customer</th>
+        <th>Vehicle</th>
+        <th>Number Plate</th>
+        <th>License</th>
+        <th>Verification</th>
+        <th>Status</th>
+        <th class="text-center">Images</th>
+        <th>Created At</th>
+        <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of orders">
+        <td>{{item.id}}</td>
+        <td>{{item.first_name+" "+item.last_name}}</td>
+        <td>{{item.brand+" "+item.name}}</td>
+        <td>{{item.number_plate}}</td>
+        <td>{{item.license_card_number}}</td>
+        <td>{{item.is_verified ? 'Verified' : 'Unverified'}}</td>
+        <td>{{item.is_deleted ? 'Inactive' : 'Active'}}</td>
+        <td class="btn-menu d-flex justify-content-between">
+            <span *ngIf="item.id_card_image" class="material-icons text-warning" (click)="_common.openImageDialog(item.id_card_image,'ID Image')">
+                photo_camera
+            </span>
+            <span *ngIf="item.license_card_image" class="material-icons text-warning" (click)="_common.openImageDialog(item.license_card_image,'License Image')">
+                photo_camera
+            </span>
+            <span *ngIf="item.utility_bill_image" class="material-icons text-warning" (click)="_common.openImageDialog(item.utility_bill_image,'Utility Image')">
+                photo_camera
+            </span>
+        </td>
+        <td>{{item.created_at | date}}</td>
+        <td class="d-flex justify-content-between btn-menu">
+            <span class="material-icons text-success" >
+            visibility
+            </span>
+            <span class="material-icons text-primary" (click)="selectCustomer(item)">
+            edit
+            </span>
+            <span class="material-icons text-danger" (click)="deleteCustomer(item.id)">
+                delete
+            </span>
+        </td>
+        </tr>
+    </tbody>
+    </table>
+</div> -->

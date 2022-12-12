@@ -32,10 +32,10 @@
             <td>{{item.mileage}} L/Kms</td>
             <td>{{item.insurance_type}}</td>
             <td class="btn-menu d-flex justify-content-between">
-              <span *ngIf="item.owner_id" class="material-icons text-success" (click)="getSingleVehicleOwner(item.owner_id)">
+              <span *ngIf="item.owner" class="material-icons text-success" (click)="getSingleVehicleOwner(item.owner.owner_id)">
                 manage_accounts
                 </span>
-              <span *ngIf="item.location_id" class="material-icons text-success" (click)="getSingleVehicleLocation(item.location_id)">
+              <span *ngIf="item.location.location_id" class="material-icons text-success" (click)="getSingleVehicleLocation(item.location.location_id)">
                   share_location
                 </span>
             </td>

@@ -4,6 +4,7 @@ import { AdminComponent } from './layout/admin/admin.component';
 import { ViewCustomersComponent } from './pages/customer/view-customers/view-customers.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { OrderComponent } from './pages/order/order.component';
 import { ViewVehicleComponent } from './pages/vehicle/view-vehicle/view-vehicle.component';
 
 const routes: Routes = [
@@ -42,6 +43,10 @@ const routes: Routes = [
       {
         path:"vehicle",
         component:ViewVehicleComponent
+      },
+      {
+        path:"orders",
+        component:OrderComponent
       }
     ]
   },

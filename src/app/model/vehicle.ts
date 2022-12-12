@@ -11,8 +11,8 @@ export interface Vehicle {
     registered_date: Date;
     fuel_type: FUEL_TYPE;
     insurance_type: INSURANCE;
-    owner_id: string;
-    location_id: string;
+    owner: VehicleOwner;
+    location: Locations;
     is_active: boolean;
     is_call_verified: boolean;
     is_visit_verified: boolean;

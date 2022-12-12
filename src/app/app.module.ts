@@ -28,6 +28,7 @@ import { AddVehicleComponent } from './pages/vehicle/add-vehicle/add-vehicle.com
 import { ViewVehicleComponent } from './pages/vehicle/view-vehicle/view-vehicle.component';
 import { ProfileModalComponent } from './components/profile-modal/profile-modal.component';
 import { environment } from 'src/environments/environment';
+import { OrderComponent } from './pages/order/order.component';
 // import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { environment } from 'src/environments/environment';
     AddVehicleComponent,
     ViewVehicleComponent,
     ProfileModalComponent,
+    OrderComponent,
   ],
   imports: [
     // AgmCoreModule.forRoot({

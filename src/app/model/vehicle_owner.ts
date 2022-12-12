@@ -1,5 +1,5 @@
 export interface VehicleOwner{
-    id:any,
+    owner_id:any,
     first_name:string,
     last_name:string,
     id_card_number:string,

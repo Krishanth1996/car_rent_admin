@@ -1,7 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { map, Observable, startWith } from 'rxjs';
+import { FUEL_TYPE, GEAR_TYPE, INSURANCE } from 'src/app/model/common';
 import { Vehicle } from 'src/app/model/vehicle';
+import { VehicleOwner } from 'src/app/model/vehicle_owner';
 import { CommonService } from 'src/app/services/common.service';
+import { VehicleOwnerService } from 'src/app/services/vehicle-owner.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 
 @Component({
@@ -12,7 +16,27 @@ import { VehicleService } from 'src/app/services/vehicle.service';
 export class AddVehicleComponent implements OnInit {
 
   @Output() clearVehicleEvent = new EventEmitter<string>();
-  constructor(public _common:CommonService,private _vehicleService:VehicleService) { }
+  constructor(
+    public _common:CommonService,
+    private _vehicleService:VehicleService,
+    private _vehicleOwnerService:VehicleOwnerService
+    ) { }
+
+  gearType = new FormControl('');
+  gearTypes = Object.values(GEAR_TYPE);
+  filteredGearTypes: Observable<string[]>;
+
+  fuelType = new FormControl('');
+  fuelTypes = Object.values(FUEL_TYPE);
+  filteredFuelTypes: Observable<string[]>;
+
+  insuranceType = new FormControl('');
+  insuranceTypes = Object.values(INSURANCE);
+  filteredInsuranceTypes: Observable<string[]>;
+
+  vehicleOwner = new FormControl('');
+  filteredVehicleOwners: Observable<VehicleOwner[]>;
+
   vehicle:Vehicle
   vehicleForm = new FormGroup({
     name: new FormControl(),
@@ -23,12 +47,34 @@ export class AddVehicleComponent implements OnInit {
     registered_date: new FormControl(),
     fuel_type: new FormControl(''),
     insurance_type: new FormControl(),
-    owner_id: new FormControl(),
+    owner: new FormControl(),
     location: new FormControl(),
     is_with_driver: new FormControl(),
   });
-    
+  vehicleOwners:VehicleOwner[]=[]
   ngOnInit(): void {
+    this._vehicleOwnerService.getAllVehicleOwner().subscribe(data=>{
+      if(!data.isError){
+        this.vehicleOwners=data.data
+        this.filteredVehicleOwners = this.vehicleOwner.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filterOwner(value || '')),
+        );
+      }
+    })
+    
+    this.filteredGearTypes = this.gearType.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '',this.gearTypes)),
+    );
+    this.filteredFuelTypes = this.fuelType.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '',this.fuelTypes)),
+    );
+    this.filteredInsuranceTypes = this.insuranceType.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || '',this.insuranceTypes)),
+    );
   }
 
   setVehicle(vehicle:Vehicle){
@@ -42,8 +88,8 @@ export class AddVehicleComponent implements OnInit {
       registered_date: vehicle.registered_date,
       fuel_type: vehicle.fuel_type,
       insurance_type: vehicle.insurance_type,
-      owner_id: vehicle.owner_id,
-      location: vehicle.location_id,
+      owner: vehicle.owner,
+      location: vehicle.location,
       is_with_driver: vehicle.is_with_driver,
     })
   }
@@ -105,6 +151,19 @@ export class AddVehicleComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  private _filter(value: string,data: any | VehicleOwner) {
+    const filterValue = this._normalizeValue(value);
+    return data.filter((gear: string) => this._normalizeValue(gear).includes(filterValue));
+  }
+  private _filterOwner(value: string) {
+    const filterValue = this._normalizeValue(value);
+    return this.vehicleOwners.filter(owner => this._normalizeValue(owner.first_name+' '+owner.last_name).includes(filterValue));
+  }
+
+  private _normalizeValue(value: string): string {
+    return value.toLowerCase().replace(/\s/g, '');
   }
 
 }

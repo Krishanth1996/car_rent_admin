@@ -20,6 +20,9 @@ export class ViewCustomersComponent implements OnInit  {
   constructor(private _customerService:CustomerService, public _common:CommonService) {}
   
   ngOnInit(): void {
+    this.getAllCustomers()
+    }
+    getAllCustomers(){
       this._customerService.getAllCustomers().subscribe(data=>{
         if(!data.isError){
           this.customers=data.data;
@@ -27,7 +30,6 @@ export class ViewCustomersComponent implements OnInit  {
         } 
       })
     }
-
     deleteCustomer(id:any){
       this._customerService.deleteCustomer(id).subscribe(data=>{
         if(!data.isError){
@@ -44,5 +46,6 @@ export class ViewCustomersComponent implements OnInit  {
     clearCustomer(event:any){
       this.selectedCustomer=undefined;
       this.addCustomer.setCustomer(undefined)
+      this.getAllCustomers()
     }
   }
