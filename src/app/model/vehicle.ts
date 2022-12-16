@@ -2,7 +2,7 @@ import { GEAR_TYPE, INSURANCE, FUEL_TYPE, Locations } from "./common";
 import { VehicleOwner } from "./vehicle_owner";
 
 export interface Vehicle {
-    id: number;
+    vehicle_id: string,
     name: string;
     brand: string;
     gear_type: GEAR_TYPE;

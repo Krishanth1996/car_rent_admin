@@ -1,111 +1,107 @@
 <div class="add-customer">
-    <form class="form-group" [formGroup]="vehicleForm">
-      <div class="row p-2">
-        <div class="col-xs-12 col-sm-4 col-xl-4">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name">
-          </div>
+  <form class="form-group" [formGroup]="vehicleForm">
+    <div class="row p-2">
+      <div class="col-xs-12 col-sm-4 col-xl-4">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name">
         </div>
-        <div class="col-xs-12 col-sm-4 col-xl-4">
-          <div class="form-group">
-            <label for="brand">Brand</label>
-            <input type="text" class="form-control" id="brand" formControlName="brand" placeholder="Brand">
-          </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-xl-4">
+        <div class="form-group">
+          <label for="brand">Brand</label>
+          <input type="text" class="form-control" id="brand" formControlName="brand" placeholder="Brand">
         </div>
-        <div class="col-xs-12 col-sm-4 col-xl-4">
-          <div class="form-group">
-            <label for="vehicleOwner">Owner</label>
-            <!-- <input type="number" class="form-control " id="contact_mobile" formControlName="contact_mobile" placeholder="Contact Number" > -->
-            <input type="text"
-                    placeholder="Search for a street"
-                    [formControl]="vehicleOwner"
-                    [matAutocomplete]="matAutocompleteVehicleOwner"
-                    class="form-control">
-            <mat-autocomplete #matAutocompleteVehicleOwner="matAutocomplete">
-                <mat-option *ngFor="let owner of filteredVehicleOwners | async" [value]="owner.id_card_number">
-                {{owner.first_name+' '+owner.first_name}}
-                </mat-option>
-            </mat-autocomplete>
-          </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-xl-4">
+        <div class="form-group">
+          <label for="vehicleOwner">Owner</label>
+          <!-- <input type="number" class="form-control " id="contact_mobile" formControlName="contact_mobile" placeholder="Contact Number" > -->
+          <input type="text" placeholder="Search for a street" [formControl]="vehicleOwner"
+            [matAutocomplete]="matAutocompleteVehicleOwner" class="form-control">
+          <mat-autocomplete #matAutocompleteVehicleOwner="matAutocomplete">
+            <mat-option *ngFor="let owner of filteredVehicleOwners | async" [value]="owner.id_card_number">
+              {{owner.first_name+' '+owner.first_name}}
+            </mat-option>
+          </mat-autocomplete>
+        </div>
+      </div>
+    </div>
+
+    <div class="row p-2">
+      <div class="col-xs-12 col-sm-4 col-xl-4">
+        <div class="form-group">
+          <label for="mileage">Mileage</label>
+          <input type="text" class="form-control" id="mileage" formControlName="mileage" placeholder="Mileage">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-xl-4">
+        <div class="form-group">
+          <label for="number_plate">Number Plate</label>
+          <input type="text" class="form-control" id="number_plate" formControlName="number_plate"
+            placeholder="Number Plate">
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-xl-4">
+        <div class="form-group">
+          <label for="registered_date">Registered On</label>
+          <input type="date" class="form-control" id="registered_date" formControlName="registered_date"
+            placeholder="Registered On">
+        </div>
+      </div>
+    </div>
+
+    <div class="row p-2">
+      <div class="col-xs-12 col-sm-4 col-xl-4">
+        <div class="form-group">
+          <label for="gear_type">Transmission</label>
+          <!-- <input type="number" class="form-control " id="contact_mobile" formControlName="contact_mobile" placeholder="Contact Number" > -->
+          <input type="text" placeholder="Search for a street" [formControl]="gearType"
+            [matAutocomplete]="matAutocompleteGear" class="form-control">
+          <mat-autocomplete #matAutocompleteGear="matAutocomplete">
+            <mat-option *ngFor="let gear of filteredGearTypes | async" [value]="gear">
+              {{gear}}
+            </mat-option>
+          </mat-autocomplete>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 col-xl-4">
+        <div class="form-group">
+          <label for="fuelType">Fuel</label>
+          <!-- <input type="number" class="form-control " id="contact_mobile" formControlName="contact_mobile" placeholder="Contact Number" > -->
+          <input type="text" placeholder="Search for a Fuel Type" [formControl]="fuelType"
+            [matAutocomplete]="matAutocompleteFuel" class="form-control">
+          <mat-autocomplete #matAutocompleteFuel="matAutocomplete">
+            <mat-option *ngFor="let fuel of filteredFuelTypes | async" [value]="fuel">
+              {{fuel}}
+            </mat-option>
+          </mat-autocomplete>
         </div>
       </div>
 
-      <div class="row p-2">
-        <div class="col-xs-12 col-sm-4 col-xl-4">
-          <div class="form-group">
-            <label for="mileage">Mileage</label>
-            <input type="text" class="form-control" id="mileage" formControlName="mileage" placeholder="Mileage">
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-xl-4">
-          <div class="form-group">
-            <label for="number_plate">Number Plate</label>
-            <input type="text" class="form-control" id="number_plate" formControlName="number_plate" placeholder="Number Plate">
-          </div>
-        </div>
-          <div class="col-xs-12 col-sm-4 col-xl-4">
-          <div class="form-group">
-            <label for="registered_date">Registered On</label>
-            <input type="date" class="form-control" id="registered_date" formControlName="registered_date" placeholder="Registered On">
-          </div>
+      <div class="col-xs-12 col-sm-4 col-xl-4">
+        <div class="form-group">
+          <label for="insuranceType">Insurance</label>
+          <!-- <input type="number" class="form-control " id="contact_mobile" formControlName="contact_mobile" placeholder="Contact Number" > -->
+          <input type="text" placeholder="Search for a Insurance" [formControl]="insuranceType"
+            [matAutocomplete]="matAutocompleteInsurance" class="form-control">
+          <mat-autocomplete #matAutocompleteInsurance="matAutocomplete">
+            <mat-option *ngFor="let insurance of filteredInsuranceTypes | async" [value]="insurance">
+              {{insurance}}
+            </mat-option>
+          </mat-autocomplete>
         </div>
       </div>
 
-      <div class="row p-2">
-        <div class="col-xs-12 col-sm-4 col-xl-4">
-            <div class="form-group">
-              <label for="gear_type">Transmission</label>
-              <!-- <input type="number" class="form-control " id="contact_mobile" formControlName="contact_mobile" placeholder="Contact Number" > -->
-              <input type="text"
-                      placeholder="Search for a street"
-                      [formControl]="gearType"
-                      [matAutocomplete]="matAutocompleteGear"
-                      class="form-control">
-              <mat-autocomplete #matAutocompleteGear="matAutocomplete">
-                  <mat-option *ngFor="let gear of filteredGearTypes | async" [value]="gear">
-                  {{gear}}
-                  </mat-option>
-              </mat-autocomplete>
-            </div>
-          </div>
-        <div class="col-xs-12 col-sm-4 col-xl-4">
-          <div class="form-group">
-            <label for="fuelType">Fuel</label>
-            <!-- <input type="number" class="form-control " id="contact_mobile" formControlName="contact_mobile" placeholder="Contact Number" > -->
-            <input type="text"
-                    placeholder="Search for a Fuel Type"
-                    [formControl]="fuelType"
-                    [matAutocomplete]="matAutocompleteFuel"
-                    class="form-control">
-            <mat-autocomplete #matAutocompleteFuel="matAutocomplete">
-                <mat-option *ngFor="let fuel of filteredFuelTypes | async" [value]="fuel">
-                {{fuel}}
-                </mat-option>
-            </mat-autocomplete>
-          </div>
-        </div>
-        
-        <div class="col-xs-12 col-sm-4 col-xl-4">
-            <div class="form-group">
-              <label for="insuranceType">Insurance</label>
-              <!-- <input type="number" class="form-control " id="contact_mobile" formControlName="contact_mobile" placeholder="Contact Number" > -->
-              <input type="text"
-                      placeholder="Search for a Insurance"
-                      [formControl]="insuranceType"
-                      [matAutocomplete]="matAutocompleteInsurance"
-                      class="form-control">
-              <mat-autocomplete #matAutocompleteInsurance="matAutocomplete">
-                  <mat-option *ngFor="let insurance of filteredInsuranceTypes | async" [value]="insurance">
-                  {{insurance}}
-                  </mat-option>
-              </mat-autocomplete>
-            </div>
-          </div>
-          
+    </div>
+
+    <div class="row p-2">
+      <div class="col-xs-12 col-sm-12 col-xl-12 text-center" style="display: flex;justify-content: space-evenly;">
+        <button *ngIf="vehicle == undefined" (click)="onFormSubmit()" type="submit"
+          class="btn btn-success btn-sm btn-block">Add Vehicle</button>
+        <button *ngIf="vehicle" (click)="onFormSubmit()" class="btn btn-warning btn-sm btn-block">Save Vehicle</button>
+        <button *ngIf="vehicle" (click)="clearForm()" class="btn btn-danger btn-sm btn-block">Clear</button>
       </div>
-    </form> 
+    </div>
+  </form>
 </div>
-
-
-  

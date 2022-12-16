@@ -1,0 +1,55 @@
+<div class="vehicle-subscription-payment">
+    <app-skelton-loading *ngIf="vsp.length==0"></app-skelton-loading>
+    <table *ngIf="vsp.length>0" id="payment_list" class="display row-border" style="color: black;" datatable
+        [dtOptions]="dtOptions">
+        <thead>
+            <tr class="th-center">
+                <th>#</th>
+                <th>Vehicle</th>
+                <th>Number Plate</th>
+                <th>Owner</th>
+                <th>Contact</th>
+                <th class="text-center">Paid On</th>
+                <th>Amount</th>
+                <th>Next Payment</th>
+                <th>Created At</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of vsp;index as i">
+                <td>{{i+1}}</td>
+                <td>{{item.vehicle.brand+" "+item.vehicle.name}}</td>
+                <td>{{item.vehicle.number_plate}}</td>
+                <td>{{item.owner.first_name+" "+item.owner.last_name}}</td>
+                <td>
+                    <a *ngIf="item.owner.contact_lan" href="tel:{{item.owner.contact_lan}}">
+                        <span class="material-icons text-success">
+                            call
+                        </span>
+                    </a>
+                    <a *ngIf="item.owner.contact_mobile" href="tel:{{item.owner.contact_lan}}">
+                        <span *ngIf="item.owner.contact_lan" class="material-icons text-success">
+                            smartphone
+                        </span>
+                    </a>
+                </td>
+                <td>{{item.paid_on | date}}</td>
+                <td>{{item.subscription.amount | currency:'LKR'}}</td>
+                <td>{{item.subscription.type_name != "INITIAL" ? (item.next_payment | date) : 'Initial Payment' }}</td>
+                <td>{{item.created_at | date}}</td>
+                <td class="d-flex justify-content-between btn-menu">
+                    <span class="material-icons text-success">
+                        visibility
+                    </span>
+                    <span class="material-icons text-primary" (click)="selectPayment(item)">
+                        edit
+                    </span>
+                    <span class="material-icons text-danger" (click)="deletePayment(item)">
+                        delete
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

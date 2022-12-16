@@ -11,8 +11,8 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class AddCustomerComponent implements OnInit {
   @Output() clearCustomerEvent = new EventEmitter<string>();
-  constructor(public _common:CommonService,private _customerService:CustomerService) { }
-  customer:Customer
+  constructor(public _common: CommonService, private _customerService: CustomerService) { }
+  customer: Customer
   customerForm = new FormGroup({
     first_name: new FormControl(),
     last_name: new FormControl(),
@@ -23,12 +23,12 @@ export class AddCustomerComponent implements OnInit {
     utility_bill_image: new FormControl(''),
     contact_mobile: new FormControl(),
   });
-    
+
   ngOnInit(): void {
   }
 
-  setCustomer(customer:Customer){
-    this.customer=customer;
+  setCustomer(customer: Customer) {
+    this.customer = customer;
     this.customerForm.patchValue({
       first_name: customer.first_name,
       last_name: customer.last_name,
@@ -38,7 +38,7 @@ export class AddCustomerComponent implements OnInit {
     })
   }
 
-  onFormSubmit(){
+  onFormSubmit() {
     const customerFormData = new FormData();
     customerFormData.append('license_card_image', this.customerForm.get('license_card_image').value);
     customerFormData.append('id_card_image', this.customerForm.get('id_card_image').value);
@@ -48,30 +48,30 @@ export class AddCustomerComponent implements OnInit {
     customerFormData.append('license_card_number', this.customerForm.get('license_card_number').value);
     customerFormData.append('id_card_number', this.customerForm.get('id_card_number').value);
     customerFormData.append('contact_mobile', this.customerForm.get('contact_mobile').value);
-    if(this.customer){
+    if (this.customer) {
       this.updateCustomer();
-    }else{
+    } else {
       this.createCustomer(customerFormData);
     }
   }
 
-  updateCustomer(){
-    this._customerService.updateCustomer(this.customerForm.value,this.customer.id).subscribe(data=>{
-      this.clearForm()   
+  updateCustomer() {
+    this._customerService.updateCustomer(this.customerForm.value, this.customer.customer_id).subscribe(data => {
+      this.clearForm()
     })
   }
-  createCustomer(customerFormData:any){
-    this._customerService.createCustomer(customerFormData).subscribe(data=>{
-      this.customerForm.reset();      
+  createCustomer(customerFormData: any) {
+    this._customerService.createCustomer(customerFormData).subscribe(data => {
+      this.customerForm.reset();
     })
   }
 
-  clearForm(){
+  clearForm() {
     this.customerForm.reset();
     this.clearCustomerEvent.emit(undefined)
   }
 
-  onFileChange(event:any,type:string){
+  onFileChange(event: any, type: string) {
     switch (type) {
       case 'id_card_image':
         this.customerForm.patchValue({

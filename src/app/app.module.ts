@@ -14,7 +14,6 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AddCustomerComponent } from './pages/customer/add-customer/add-customer.component';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NetworkInterceptor } from './network.interceptor';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
@@ -29,6 +28,9 @@ import { ViewVehicleComponent } from './pages/vehicle/view-vehicle/view-vehicle.
 import { ProfileModalComponent } from './components/profile-modal/profile-modal.component';
 import { environment } from 'src/environments/environment';
 import { OrderComponent } from './pages/order/order.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { VehicleSubscriptionPaymentComponent } from './pages/vehicle-subscription-payment/vehicle-subscription-payment.component';
+import { SkeltonLoadingComponent } from './components/skelton-loading/skelton-loading.component';
 // import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { OrderComponent } from './pages/order/order.component';
     ViewVehicleComponent,
     ProfileModalComponent,
     OrderComponent,
+    VehicleSubscriptionPaymentComponent,
+    SkeltonLoadingComponent,
   ],
   imports: [
     // AgmCoreModule.forRoot({
@@ -65,10 +69,10 @@ import { OrderComponent } from './pages/order/order.component';
     ReactiveFormsModule,
   ],
   providers: [{
-    provide:HTTP_INTERCEPTORS,
-    useClass:NetworkInterceptor,
-    multi:true
-  },{provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}],
+    provide: HTTP_INTERCEPTORS,
+    useClass: NetworkInterceptor,
+    multi: true
+  }, { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

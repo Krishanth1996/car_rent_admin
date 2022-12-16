@@ -15,55 +15,55 @@ import { AddVehicleComponent } from '../add-vehicle/add-vehicle.component';
 export class ViewVehicleComponent implements OnInit {
 
   vehicle: Vehicle[];
-  selectedVehicle:Vehicle;
+  selectedVehicle: Vehicle;
   dtOptions: any;
-  selectedImage:string;
+  selectedImage: string;
 
   @ViewChild(AddVehicleComponent) addVehicle: AddVehicleComponent;
-  
-  constructor(private _vehicleService:VehicleService, public _common:CommonService,public _location:LocationService, public _owner:VehicleOwnerService) {}
-  
+
+  constructor(private _vehicleService: VehicleService, public _common: CommonService, public _location: LocationService, public _owner: VehicleOwnerService) { }
+
   ngOnInit(): void {
-      this._vehicleService.getAllVehicles().subscribe(data=>{
-        if(!data.isError){
-          this.vehicle=data.data;
-          this.dtOptions = this._common.getDataTableSettings();
-        } 
-      })
-    }
-
-    deleteVehicle(id:any){
-      this._vehicleService.deleteVehicle(id).subscribe(data=>{
-        if(!data.isError){
-         this.vehicle=this.vehicle.filter(vehicle=>vehicle.id != id)
-        }
-      })
-    }
-
-    selectVehicle(vehicle:Vehicle){
-      this.selectedVehicle=vehicle;
-      this.addVehicle.setVehicle(vehicle);
-    }
-
-    clearVehicle(event:any){
-      this.selectedVehicle=undefined;
-      this.addVehicle.setVehicle(undefined)
-    }
-
-    getSingleVehicleLocation(id:string){
-      this._location.getSingleVehicleLocation(id).subscribe(data=>{
-        if(!data.isError){
-         console.log(data);
-         
-        } 
-      })
-    }
-
-    getSingleVehicleOwner(id:string){
-      this._owner.getSingleVehicleOwner(id).subscribe(data=>{
-         if(!data.isError){
-           this._common.openProfileDialog(data.data[0])
-          } 
-      })
-    }
+    this._vehicleService.getAllVehicles().subscribe(data => {
+      if (!data.isError) {
+        this.vehicle = data.data;
+        this.dtOptions = this._common.getDataTableSettings();
+      }
+    })
   }
+
+  deleteVehicle(id: string) {
+    this._vehicleService.deleteVehicle(id).subscribe(data => {
+      if (!data.isError) {
+        this.vehicle = this.vehicle.filter(vehicle => vehicle.vehicle_id != id)
+      }
+    })
+  }
+
+  selectVehicle(vehicle: Vehicle) {
+    this.selectedVehicle = vehicle;
+    this.addVehicle.setVehicle(vehicle);
+  }
+
+  clearVehicle(event: any) {
+    this.selectedVehicle = undefined;
+    this.addVehicle.setVehicle(undefined)
+  }
+
+  getSingleVehicleLocation(id: string) {
+    this._location.getSingleVehicleLocation(id).subscribe(data => {
+      if (!data.isError) {
+        console.log(data);
+
+      }
+    })
+  }
+
+  getSingleVehicleOwner(id: string) {
+    this._owner.getSingleVehicleOwner(id).subscribe(data => {
+      if (!data.isError) {
+        this._common.openProfileDialog(data.data[0])
+      }
+    })
+  }
+}

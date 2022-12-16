@@ -5,16 +5,17 @@ import { ViewCustomersComponent } from './pages/customer/view-customers/view-cus
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { OrderComponent } from './pages/order/order.component';
+import { VehicleSubscriptionPaymentComponent } from './pages/vehicle-subscription-payment/vehicle-subscription-payment.component';
 import { ViewVehicleComponent } from './pages/vehicle/view-vehicle/view-vehicle.component';
 
 const routes: Routes = [
   {
-    path:"",
-    component:AdminComponent,
-    children:[
+    path: "",
+    component: AdminComponent,
+    children: [
       {
-        path:"dashboard",
-        component:DashboardComponent,
+        path: "dashboard",
+        component: DashboardComponent,
         // children:[
         //   {
         //     path:"list",
@@ -27,8 +28,8 @@ const routes: Routes = [
         // ]
       },
       {
-        path:"customer",
-        component:ViewCustomersComponent,
+        path: "customer",
+        component: ViewCustomersComponent,
         // children:[
         //   {
         //     path:"list",
@@ -41,23 +42,28 @@ const routes: Routes = [
         // ]
       },
       {
-        path:"vehicle",
-        component:ViewVehicleComponent
+        path: "vehicle",
+        component: ViewVehicleComponent
       },
       {
-        path:"orders",
-        component:OrderComponent
+        path: "orders",
+        component: OrderComponent
+      },
+      {
+        path: "vehicle-subscription-payments",
+        component: VehicleSubscriptionPaymentComponent
       }
     ]
   },
   {
-    path:"",
-    redirectTo:'/dashboard',
+    path: "",
+    redirectTo: '/dashboard',
     pathMatch: 'full'
   },
-  { 
-    path: '**', 
-    component: NotFoundComponent },
+  {
+    path: '**',
+    component: NotFoundComponent
+  },
 ];
 
 @NgModule({
