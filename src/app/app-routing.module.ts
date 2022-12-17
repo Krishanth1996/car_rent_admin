@@ -10,7 +10,7 @@ import { ViewVehicleComponent } from './pages/vehicle/view-vehicle/view-vehicle.
 
 const routes: Routes = [
   {
-    path: "",
+    path: "admin",
     component: AdminComponent,
     children: [
       {
@@ -57,7 +57,7 @@ const routes: Routes = [
   },
   {
     path: "",
-    redirectTo: '/dashboard',
+    redirectTo: 'admin/dashboard',
     pathMatch: 'full'
   },
   {
