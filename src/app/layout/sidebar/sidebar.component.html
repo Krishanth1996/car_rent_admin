@@ -5,30 +5,30 @@
     <mat-divider></mat-divider>
     <div class="nav-menu">
         <mat-list>
-            <a [routerLink]="['dashboard']">
+            <a *ngIf="_common.checkPermission('dashboard')" [routerLink]="['dashboard']">
                 <mat-list-item>Dashboard</mat-list-item>
             </a>
-            <a [routerLink]="['customer']">
+            <a *ngIf="_common.checkPermission('customer')" [routerLink]="['customer']">
                 <mat-list-item>Customer</mat-list-item>
             </a>
-            <a [routerLink]="['vehicle']">
+            <a *ngIf="_common.checkPermission('vehicles')" [routerLink]="['vehicle']">
                 <mat-list-item>Vehicles</mat-list-item>
             </a>
-            <a [routerLink]="['orders']">
+            <a *ngIf="_common.checkPermission('orders')" [routerLink]="['orders']">
                 <mat-list-item>Orders</mat-list-item>
             </a>
-            <a [routerLink]="['vehicle-subscription-payments']">
+            <a *ngIf="_common.checkPermission('payments')" [routerLink]="['vehicle-subscription-payments']">
                 <mat-list-item>Payments</mat-list-item>
             </a>
-            <a [routerLink]="['vehicle-subscription']">
+            <a *ngIf="_common.checkPermission('packages')" [routerLink]="['vehicle-subscription']">
                 <mat-list-item>Packages</mat-list-item>
             </a>
-            <a [routerLink]="['users']">
+            <a *ngIf="_common.checkPermission('users')" [routerLink]="['users']">
                 <mat-list-item>Users</mat-list-item>
             </a>
-            <a [routerLink]="['users']">
+            <!-- <a [routerLink]="['users']">
                 <mat-list-item>Users</mat-list-item>
-            </a>
+            </a> -->
         </mat-list>
     </div>
 </div>

@@ -34,6 +34,7 @@ import { SkeltonLoadingComponent } from './components/skelton-loading/skelton-lo
 import { PackageComponent } from './pages/package/package.component';
 import { UsersComponent } from './pages/users/users.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 // import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { SettingsComponent } from './pages/settings/settings.component';
     PackageComponent,
     UsersComponent,
     SettingsComponent,
+    ProfileComponent,
   ],
   imports: [
     // AgmCoreModule.forRoot({

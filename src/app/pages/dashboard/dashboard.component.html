@@ -1,4 +1,4 @@
-<div class="dashboard">
+<div class="dashboard" *ngIf="dashboardData">
   <div id="root">
     <div class="container pt-5">
       <div class="row align-items-stretch">
@@ -14,8 +14,7 @@
                 </path>
               </svg> -->
             </h4>
-            <span class="hind-font caption-12 c-dashboardInfo__count">{{dashboardData.vehicle_subscription_payments|
-              currency:'LKR '}}</span>
+            <span class="hind-font caption-12 c-dashboardInfo__count">{{dashboardData.vehicle_subscription_payments|currency:'LKR '}}</span>
           </div>
         </div>
 

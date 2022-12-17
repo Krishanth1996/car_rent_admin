@@ -20,18 +20,21 @@ export class UserService {
   setSession(authResult:any) {
     // const expiresAt = moment().add(authResult.expiresIn,'second');
 
-    sessionStorage.setItem('sessionToken', authResult.token);
+    localStorage.setItem('sessionToken', authResult.token);
+    localStorage.setItem('user', JSON.stringify(authResult.user[0]));
     // localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()) );
   }          
 
   logout() {
-    sessionStorage.removeItem("sessionToken");
+    localStorage.removeItem("sessionToken");
+    localStorage.removeItem('user');
+
     // sessionStorage.removeItem("expires_at");
     this.router.navigate(['']);
   }
 
   public isLoggedIn() {
-    return sessionStorage.getItem("sessionToken");
+    return localStorage.getItem("sessionToken");
       // return moment().isBefore(this.getExpiration());
   }
 

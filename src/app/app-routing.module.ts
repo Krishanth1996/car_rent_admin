@@ -7,6 +7,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { OrderComponent } from './pages/order/order.component';
 import { PackageComponent } from './pages/package/package.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { SettingsComponent } from './pages/settings/settings.component';
 import { UsersComponent } from './pages/users/users.component';
 import { VehicleSubscriptionPaymentComponent } from './pages/vehicle-subscription-payment/vehicle-subscription-payment.component';
@@ -21,7 +22,11 @@ const routes: Routes = [
       {
         path: "dashboard",
         component: DashboardComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        data:{
+          role:true
+        }
+        
       },
       {
         path: "customer",
@@ -57,6 +62,11 @@ const routes: Routes = [
         path: "settings",
         component: SettingsComponent,
         canActivate: [AuthGuard]
+      },
+      {
+        path: "profile",
+        component: ProfileComponent,
+        canActivate: [AuthGuard]
       }
     ]
   },
@@ -68,6 +78,11 @@ const routes: Routes = [
     path: "",
     component:AdminComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "",
+    redirectTo:"admin",
+    pathMatch:"full"
   },
   {
     path: '**',

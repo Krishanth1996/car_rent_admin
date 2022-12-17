@@ -14,6 +14,11 @@ export class AuthGuardService implements CanActivate {
       this.router.navigate(['login']);
       return false;
     }
-    return true;
+    //if this value match to the route data role then route will work
+//     let url=this.router.url
+// debugger
+    return true
   }
+
 }
+

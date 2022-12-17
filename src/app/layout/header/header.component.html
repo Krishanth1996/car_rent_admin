@@ -9,17 +9,19 @@
       <img src="assets/images/user-icon.jpg" alt="" srcset="">
     </button>
     <mat-menu #menu="matMenu">
+      <a class="link-unstyled" [routerLink]="['profile']">
       <button mat-menu-item>
         <mat-icon>account_circle</mat-icon>
         <span>Profile</span>
       </button>
+    </a>
       <!-- <button mat-menu-item disabled> --> 
-      <a class="link-unstyled" [routerLink]="['settings']">
+      <!-- <a class="link-unstyled" [routerLink]="['settings']">
         <button mat-menu-item>
           <mat-icon>settings</mat-icon>
           <span>Settings</span>
         </button>
-      </a>
+      </a> -->
       <button mat-menu-item (click)="_US.logout()">
         <mat-icon>logout</mat-icon>
         <span>Logout</span>
