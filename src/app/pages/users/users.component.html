@@ -1,0 +1,179 @@
+<div class="users">
+    <div class="view-customer">
+        <form class="form-group" [formGroup]="userForm">
+            <div class="row p-2">
+              <div class="col-xs-12 col-sm-4 col-xl-4">
+                <div class="form-group">
+                  <label for="first_name">First Name</label>
+                  <input type="text" class="form-control" id="first_name" formControlName="first_name" placeholder="First Name">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-xl-4">
+                <div class="form-group">
+                  <label for="last_name">Last Name</label>
+                  <input type="text" class="form-control" id="last_name" formControlName="last_name" placeholder="Last Name">
+                </div>
+              </div>
+                <div class="col-xs-12 col-sm-4 col-xl-4">
+                <div class="form-group">
+                  <label for="id_card_number">Contact Number</label>
+                  <input type="number" class="form-control " id="contact_mobile" formControlName="contact_mobile" placeholder="Contact Number" >
+                </div>
+              </div>
+            </div>
+
+            <div class="row p-2">
+              <div class="col-xs-12 col-sm-4 col-xl-4">
+                <div class="form-group">
+                  <label for="user_name">Username</label>
+                  <input type="text" class="form-control" id="user_name" formControlName="user_name" placeholder="Username">
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-xl-4">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
+                </div>
+              </div>
+                <div class="col-xs-12 col-sm-4 col-xl-4">
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <input type="text" placeholder="Search for a vehicle" id="role"
+                            [formControl]="role" [matAutocomplete]="matAutocompleteVehicle" class="form-control"
+                            formControlName="role">
+                        <mat-autocomplete #matAutocompleteVehicle="matAutocomplete"
+                            (optionSelected)="selectOption($event)">
+                            <mat-option *ngFor="let role of filteredRoles | async" [value]="role.role_id">
+                                {{role.name}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </div>
+                </div>
+            
+            </div>
+
+            <div class="row p-2">
+                <div class="col-xs-12 col-sm-4 col-xl-4">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+                    </div>
+                </div>
+    
+                <div class="col-xs-12 col-sm-4 col-xl-4">
+                    <div class="form-group">
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" class="form-control " id="confirm_password" formControlName="confirm_password" placeholder="Confirm Password" >
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-xl-4">
+                    <div class="form-group">
+                      <label for="is_deleted">Status</label>
+                      <select class="form-select" aria-label="Default select example" formControlName="is_deleted">
+                        <option value="0">Enable</option>
+                        <option value="1">Disable</option>
+                      </select>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="row p-2">
+              <div class="col-xs-12 col-sm-4 col-xl-4">
+                <div class="form-group">
+                  <label for="license_card_number">License Number</label>
+                  <input type="text" class="form-control " id="license_card_number" formControlName="license_card_number" placeholder="License Number" >
+                  <div class="pt-2" >
+                    <label class="btn btn-primary form-control-file" for="license_card_image">License Number</label>
+                    <input type="file" (change)="onFileChange($event,'license_card_image')" id="license_card_image"  placeholder="license_card_image"  class="form-control-file d-none" required>
+                  </div>
+                </div>
+                
+              </div>
+              <div class="col-xs-12 col-sm-4 col-xl-4">
+                <div class="form-group">
+                  <label for="id_card_number">ID Number</label>
+                  <input type="text" class="form-control " id="id_card_number" formControlName="id_card_number" placeholder="ID Number" >
+                  <div class="pt-2">
+                    <label class="btn btn-primary form-control-file" for="id_card_image">ID Card</label>
+                    <input  (change)="onFileChange($event,'id_card_image')" type="file" id="id_card_image" placeholder="id_card_image" class="form-control-file d-none" required>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-12 col-sm-4 col-xl-4" >
+                <div class="form-group">
+                  <!-- <label for="utility_bill_image">Utility Bill</label> -->
+                  <div class="pt-2">
+                    <label class="btn btn-primary form-control-file" for="utility_bill_image">Utility Bill</label>
+                    <input type="file" (change)="onFileChange($event,'utility_bill_image')" id="utility_bill_image" placeholder="utility_bill_image"  class="form-control-file d-none" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row p-2">
+              <div class="col-xs-12 col-sm-12 col-xl-12 text-center" style="    display: flex;
+              justify-content: space-evenly;">
+                <button *ngIf="selectedUser == undefined" (click)="onFormSubmit()" type="submit" class="btn btn-success btn-sm btn-block">Add user</button>
+                <button *ngIf="selectedUser" (click)="onFormSubmit()" class="btn btn-warning btn-sm btn-block">Save User</button>
+                <button *ngIf="selectedUser" (click)="clearForm()" class="btn btn-danger btn-sm btn-block">Clear</button>
+              </div>
+            </div>
+          </form> 
+        <app-skelton-loading *ngIf="!users"></app-skelton-loading>
+        <table *ngIf="users" id="customer_list" class="display row-border" style="color: black;" datatable
+          [dtOptions]="dtOptions">
+          <thead>
+            <tr class="th-center">
+              <th>#</th>
+              <th>Name</th>
+              <th>Contact</th>
+              <th>ID</th>
+              <th>License</th>
+              <th>Role</th>
+              <th>Verification</th>
+              <th>Status</th>
+              <!-- <th class="text-center">Images</th> -->
+              <th>Created At</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of users;index as i">
+              <td>{{i+1}}</td>
+              <td>{{item.first_name}}</td>
+              <td>{{item.contact_mobile}}</td>
+              <td>{{item.id_card_number}}</td>
+              <td>{{item.license_card_number}}</td>
+              <td>{{item.license_card_number}}</td>
+              <td>{{item.is_verified ? 'Verified' : 'Unverified'}}</td>
+              <td>{{item.is_deleted ? 'Inactive' : 'Active'}}</td>
+              <!-- <td class="btn-menu d-flex justify-content-between">
+                <span *ngIf="item.id_card_image" class="material-icons text-warning"
+                  (click)="_common.openImageDialog(item.id_card_image,'ID Image')">
+                  photo_camera
+                </span>
+                <span *ngIf="item.license_card_image" class="material-icons text-warning"
+                  (click)="_common.openImageDialog(item.license_card_image,'License Image')">
+                  photo_camera
+                </span>
+                <span *ngIf="item.utility_bill_image" class="material-icons text-warning"
+                  (click)="_common.openImageDialog(item.utility_bill_image,'Utility Image')">
+                  photo_camera
+                </span>
+              </td> -->
+              <td>{{item.created_at | date}}</td>
+              <td class="d-flex justify-content-between btn-menu">
+                <span class="material-icons text-success">
+                  visibility
+                </span>
+                <span class="material-icons text-primary" (click)="selectUser(item)">
+                  edit
+                </span>
+                <span class="material-icons text-danger" (click)="deleteUser(item.user_id)">
+                  delete
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</div>

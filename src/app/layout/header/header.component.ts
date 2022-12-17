@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit {
   @Input() isDrawer: boolean = false;
   @Input() drawer: MatDrawer;
 
-  constructor() { }
+  constructor(public _US:UserService) { }
 
   ngOnInit(): void {
   }

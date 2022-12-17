@@ -1,0 +1,231 @@
+<div class="settings">
+    <div class="row p-2">
+        <div class="col-xs-12 col-sm-4 col-xl-4">
+            <div class="form-group">
+            <label for="role">Select Role </label>
+            <select class="form-select" aria-label="Default select example" (change)="setPermissions($event)" [formControl]="selectionRole">
+                <option value="{{item.role_id}}" *ngFor="let item of roles;index as i">{{item.name}}</option>
+            </select>
+            </div>
+        </div>
+    </div>
+    <div class="row p-2" *ngIf="selectedRole">
+        <div class="row title">
+            <div class="col-xs-12 col-sm-4 col-xl-4">
+                <!-- Permission -->
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                CREATE
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                READ
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                UPDATE
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                DELETE
+            </div>
+        </div>
+        <div class="row title border-bottom">
+            <div class="col-xs-12 col-sm-4 col-xl-4">
+                Customer
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2 text-center">
+                <div class="form-check text-center">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.customer.CREATE">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.customer.READ">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.customer.UPDATE">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.customer.DELETE">
+                </div>
+            </div>
+        </div>
+        <div class="row title border-bottom">
+            <div class="col-xs-12 col-sm-4 col-xl-4">
+                Users
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2 text-center">
+                <div class="form-check text-center">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.users.CREATE">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.users.READ">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.users.UPDATE">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.users.DELETE">
+                </div>
+            </div>
+        </div>
+        <div class="row title border-bottom">
+            <div class="col-xs-12 col-sm-4 col-xl-4">
+                Orders
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2 text-center">
+                <div class="form-check text-center">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.orders.CREATE">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.orders.READ">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.orders.UPDATE">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.orders.DELETE">
+                </div>
+            </div>
+        </div>
+        <div class="row title border-bottom">
+            <div class="col-xs-12 col-sm-4 col-xl-4">
+                Roles
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2 text-center">
+                <div class="form-check text-center">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.roles.CREATE">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.roles.READ">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.roles.UPDATE">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.roles.DELETE">
+                </div>
+            </div>
+        </div>
+        <div class="row title border-bottom">
+            <div class="col-xs-12 col-sm-4 col-xl-4">
+                Packages
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2 text-center">
+                <div class="form-check text-center">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.packages.CREATE">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.packages.READ">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.packages.UPDATE">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.packages.DELETE">
+                </div>
+            </div>
+        </div>
+        <div class="row title border-bottom">
+            <div class="col-xs-12 col-sm-4 col-xl-4">
+                Payments
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2 text-center">
+                <div class="form-check text-center">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.payments.CREATE">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.payments.READ">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.payments.UPDATE">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.payments.DELETE">
+                </div>
+            </div>
+        </div>
+        <div class="row title border-bottom">
+            <div class="col-xs-12 col-sm-4 col-xl-4">
+                Settings
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2 text-center">
+                <div class="form-check text-center">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.settings.CREATE">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.settings.READ">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.settings.UPDATE">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.settings.DELETE">
+                </div>
+            </div>
+        </div>
+        <div class="row title border-bottom">
+            <div class="col-xs-12 col-sm-4 col-xl-4">
+                Vehicles
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2 text-center">
+                <div class="form-check text-center">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.vehicles.CREATE">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.vehicles.READ">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.vehicles.UPDATE">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-2 col-xl-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [checked]="selectedRole.permissions.vehicles.DELETE">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

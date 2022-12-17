@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { map, startWith } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-import { Customer } from 'src/app/model/customer';
+import { Customer } from 'src/app/model/users';
 import { Order } from 'src/app/model/orders';
 import { Vehicle } from 'src/app/model/vehicle';
 import { CommonService } from 'src/app/services/common.service';

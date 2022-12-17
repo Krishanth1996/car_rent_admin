@@ -1,0 +1,71 @@
+<div class="subscription-package">
+    <form class="form-group" [formGroup]="packageForm">
+        <div class="row p-2">
+          <div class="col-xs-12 col-sm-4 col-xl-4">
+            <div class="form-group">
+              <label for="type_name">Type</label>
+              <input type="text" class="form-control" id="type_name" formControlName="type_name" placeholder="Package Name">
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-xl-4">
+            <div class="form-group">
+              <label for="amount">Amount</label>
+              <input type="text" class="form-control" id="amount" formControlName="amount"
+                placeholder="Amount">
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4 col-xl-4">
+            <div class="form-group">
+              <label for="is_deleted">Status</label>
+              <select class="form-select" aria-label="Default select example" formControlName="is_deleted">
+                <option value="0">Enable</option>
+                <option value="1">Disable</option>
+              </select>
+            </div>
+          </div>
+        </div>
+    
+        <div class="row p-2">
+          <div class="col-xs-12 col-sm-12 col-xl-12 text-center" style="display: flex;justify-content: space-evenly;">
+            <button *ngIf="selectedPackage==undefined" (click)="onFormSubmit()" type="submit"
+              class="btn btn-success btn-sm btn-block">Create Package</button>
+              <button *ngIf="selectedPackage" (click)="clearForm()" class="btn btn-outline-danger btn-sm btn-block">Clear</button>
+            <button *ngIf="selectedPackage" (click)="onFormSubmit(true)" class="btn btn-warning btn-sm btn-block">Save Package</button>
+          </div>
+        </div>
+      </form>
+        <app-skelton-loading *ngIf="!packages"></app-skelton-loading>
+        <table *ngIf="packages.length>0" id="customer_list" class="display row-border" style="color: black;" datatable
+          [dtOptions]="dtOptions">
+          <thead>
+            <tr class="th-center">
+              <th>#</th>
+              <th>Type</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Created At</th>
+              <th class="text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of packages;index as i">
+              <td>{{i+1}}</td>
+              <td>{{item.type_name}}</td>
+              <td>{{item.amount | currency:'LKR '}}</td>
+              <td [ngClass]="!item.is_deleted ? 'text-success':'text-danger'">{{item.is_deleted ? 'Inactive' : 'Active'}}</td>
+              <td>{{item.created_at | date}}</td>
+              <td class="d-flex justify-content-between btn-menu">
+                <span class="material-icons text-success">
+                  visibility
+                </span>
+                <span class="material-icons text-primary" (click)="selectPackage(item)">
+                  edit
+                </span>
+                <span class="material-icons text-danger" (click)="deletePackage(item)">
+                  delete
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+</div>

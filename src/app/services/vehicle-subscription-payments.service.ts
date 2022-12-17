@@ -17,18 +17,37 @@ export class VehicleSubscriptionPaymentsService {
     return this.http.get<any>(url);
   }
 
-  createVehicleSubscriptionPayment(vehicleData: any) {
+  createVehicleSubscriptionPayment(data: any) {
     let url = this.path + "vehicle-subscription-payment";
-    return this.http.post<any>(url, vehicleData);
+    return this.http.post<any>(url, data);
   }
 
-  updateVehicleSubscriptionPayment(vehicleData: any, id: any) {
+  updateVehicleSubscriptionPayment(data: any, id: any) {
     let url = this.path + `vehicle-subscription-payment/${id}`;
-    return this.http.put<any>(url, vehicleData);
+    return this.http.put<any>(url, data);
   }
 
   deleteVehicleSubscriptionPayment(id: any) {
     let url = this.path + `vehicle-subscription-payment/${id}`;
+    return this.http.delete<any>(url);
+  }
+
+  createSubscriptionType(data: any) {
+    let url = this.path + "vehicle-subscription";
+    return this.http.post<any>(url, data);
+  }
+
+  updateSubscriptionType(data: any, id: any) {
+    let url = this.path + `vehicle-subscription/${id}`;
+    return this.http.put<any>(url, data);
+  }
+
+  getAllSubscriptionTypes(){
+    let url=this.path+"vehicle-subscription";
+    return this.http.get<any>(url);
+  }
+  deleteSubscriptionType(id: any) {
+    let url = this.path + `vehicle-subscription/${id}`;
     return this.http.delete<any>(url);
   }
 }

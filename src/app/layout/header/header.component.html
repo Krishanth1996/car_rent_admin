@@ -5,6 +5,27 @@
     </button>
   </div>
   <div class="user-menu">
-    <img src="assets/images/user-icon.jpg" alt="" srcset="">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <img src="assets/images/user-icon.jpg" alt="" srcset="">
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>account_circle</mat-icon>
+        <span>Profile</span>
+      </button>
+      <!-- <button mat-menu-item disabled> --> 
+      <a class="link-unstyled" [routerLink]="['settings']">
+        <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </button>
+      </a>
+      <button mat-menu-item (click)="_US.logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+   
   </div>
+  
 </div>

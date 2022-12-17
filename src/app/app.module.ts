@@ -31,6 +31,9 @@ import { OrderComponent } from './pages/order/order.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { VehicleSubscriptionPaymentComponent } from './pages/vehicle-subscription-payment/vehicle-subscription-payment.component';
 import { SkeltonLoadingComponent } from './components/skelton-loading/skelton-loading.component';
+import { PackageComponent } from './pages/package/package.component';
+import { UsersComponent } from './pages/users/users.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 // import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [
@@ -54,6 +57,9 @@ import { SkeltonLoadingComponent } from './components/skelton-loading/skelton-lo
     OrderComponent,
     VehicleSubscriptionPaymentComponent,
     SkeltonLoadingComponent,
+    PackageComponent,
+    UsersComponent,
+    SettingsComponent,
   ],
   imports: [
     // AgmCoreModule.forRoot({

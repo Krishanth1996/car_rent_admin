@@ -88,4 +88,7 @@ export class CommonService {
     this.router.navigate([routeName], { relativeTo: this.route });
   }
 
+  _normalizeValue(value: string): string {
+    return value.toLowerCase().replace(/\s/g, '');
+  }
 }

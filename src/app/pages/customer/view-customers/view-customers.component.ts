@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Customer } from 'src/app/model/customer';
+import { Customer } from 'src/app/model/users';
 import { CommonService } from 'src/app/services/common.service';
 import { CustomerService } from 'src/app/services/customer.service';
 import { AddCustomerComponent } from '../add-customer/add-customer.component';

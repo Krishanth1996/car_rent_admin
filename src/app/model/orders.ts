@@ -1,5 +1,5 @@
 import { Image } from "./common";
-import { Customer } from "./customer";
+import { Customer } from "./users";
 import { Vehicle } from "./vehicle";
 
 export interface Order {

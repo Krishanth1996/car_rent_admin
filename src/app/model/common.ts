@@ -36,3 +36,19 @@ export interface Locations{
     longitude:string
     is_deleted:boolean
 }
+
+export interface Roles{
+    role_id:string,
+    name:string,
+    permissions:any,
+    is_deleted:boolean
+}
+
+export interface Settings{
+    roles:Roles[]
+}
+
+export interface PermissionSettings{
+    name:string,
+    permission:JSON
+}

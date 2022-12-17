@@ -1,1 +1,54 @@
-<p>login works!</p>
+<div class="login">
+    <div class="account-pages my-5 pt-sm-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card overflow-hidden">
+                        <div class="card-body pt-5">
+                            <div class="p-2">
+                                <form class="form-horizontal" [formGroup]="loginForm" (ngSubmit) ="onSubmit()">
+
+                                    <div class="mb-3">
+                                        <label class="form-label" for="user_name">Username</label>
+                                        <input type="text" class="form-control" id="user_name" formControlName="user_name" placeholder="Enter username">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label" for="password">Password</label>
+                                        <input type="password" class="form-control" id="password" formControlName="password"
+                                        placeholder="Enter password">
+                                    </div>
+
+                                    <!-- <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="customControlInline">
+                                        <label class="form-check-label" for="customControlInline">Remember
+                                            me</label>
+                                    </div> -->
+
+                                    <div class="mt-3">
+                                        <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Log
+                                            In</button>
+                                    </div>
+
+                                    <!-- <div class="mt-4 text-center">
+                                        <a href="pages-recoverpw.html" class="text-muted"><i
+                                                class="mdi mdi-lock me-1"></i> Forgot your password?</a>
+                                    </div> -->
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <p>©
+                            <script>document.write(new Date().getFullYear())</script> Rent a Vehicle. Crafted with <i
+                                class="mdi mdi-heart text-danger"></i> by <a href="https://www.kelaxa.com/">Kelaxa</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

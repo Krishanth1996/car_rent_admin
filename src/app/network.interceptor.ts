@@ -15,10 +15,27 @@ export class NetworkInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     this.loader.show();
-    return next.handle(request).pipe(
-      finalize( ()=>{
-        this.loader.hide()
-      })
-    );
+    const sessionToken = sessionStorage.getItem("sessionToken");
+    if (sessionToken) {
+      const cloned = request.clone({
+          headers: request.headers.set("Authorization",
+              "Bearer " + sessionToken)
+      });
+
+      // return next.handle(cloned);
+      return next.handle(cloned).pipe(
+        finalize( ()=>{
+          this.loader.hide()
+        })
+      );
+  }
+  else {
+      // return next.handle(request);
+      return next.handle(request).pipe(
+        finalize( ()=>{
+          this.loader.hide()
+        })
+      );
+  }
   }
 }

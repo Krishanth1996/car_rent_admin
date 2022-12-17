@@ -1,6 +1,6 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Customer } from 'src/app/model/customer';
+import { Customer } from 'src/app/model/users';
 import { CommonService } from 'src/app/services/common.service';
 import { CustomerService } from 'src/app/services/customer.service';
 
