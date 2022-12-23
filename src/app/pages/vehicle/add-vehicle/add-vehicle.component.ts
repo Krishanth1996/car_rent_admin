@@ -36,8 +36,15 @@ export class AddVehicleComponent implements OnInit {
 
   vehicleOwner = new FormControl('');
   filteredVehicleOwners: Observable<VehicleOwner[]>;
+  
+
 
   vehicle: Vehicle
+  vehiclePriceRangeForm = new FormGroup({
+    vehicle_id:new FormControl(),
+    name:new FormControl(),
+    amount:new FormControl()
+  })
   vehicleForm = new FormGroup({
     name: new FormControl(),
     brand: new FormControl(),

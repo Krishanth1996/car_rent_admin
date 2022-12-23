@@ -96,37 +96,37 @@ export class CommonService {
     
 public checkPermission(page:string){
   let user = JSON.parse(localStorage.getItem('user'))
-  if(user.permissions){
-    let permissions = JSON.parse(user.permissions);
-      if(page=='customer'){
-        return this.grantPermission(permissions.customer)
-      }
-      else if(page=='orders'){
-        return this.grantPermission(permissions.orders)
-      }
-      else if(page=='packages'){
-        return this.grantPermission(permissions.packages)
-      }
-      else if(page=='vehicle-subscription-payments'){
-        return this.grantPermission(permissions.payments)
-      }
-      else if(page=='roles'){
-        return this.grantPermission(permissions.roles)
-      }
-      else if(page=='settings'){
-        return this.grantPermission(permissions.settings)
-      }
-      else if(page=='users'){
-        return this.grantPermission(permissions.users)
-      }
-      else if(page=='vehicles'){
-        return this.grantPermission(permissions.vehicles)
-      }
-      else{
-        return true
-      }
-  }
-  return false
+  // if(user.permissions){
+  //   let permissions = JSON.parse(user.permissions);
+  //     if(page=='customer'){
+  //       return this.grantPermission(permissions.customer)
+  //     }
+  //     else if(page=='orders'){
+  //       return this.grantPermission(permissions.orders)
+  //     }
+  //     else if(page=='packages'){
+  //       return this.grantPermission(permissions.packages)
+  //     }
+  //     else if(page=='vehicle-subscription-payments'){
+  //       return this.grantPermission(permissions.payments)
+  //     }
+  //     else if(page=='roles'){
+  //       return this.grantPermission(permissions.roles)
+  //     }
+  //     else if(page=='settings'){
+  //       return this.grantPermission(permissions.settings)
+  //     }
+  //     else if(page=='users'){
+  //       return this.grantPermission(permissions.users)
+  //     }
+  //     else if(page=='vehicles'){
+  //       return this.grantPermission(permissions.vehicles)
+  //     }
+  //     else{
+  //       return true
+  //     }
+  // }
+  return true
 }
 
 grantPermission(permission:any){

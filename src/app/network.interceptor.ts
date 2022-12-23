@@ -15,7 +15,7 @@ export class NetworkInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     this.loader.show();
-    const sessionToken = sessionStorage.getItem("sessionToken");
+    const sessionToken = localStorage.getItem("sessionToken");
     if (sessionToken) {
       const cloned = request.clone({
           headers: request.headers.set("Authorization",

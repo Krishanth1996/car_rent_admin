@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { map, startWith } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
 import { Vehicle } from 'src/app/model/vehicle';
 import { CommonService } from 'src/app/services/common.service';
 import { CustomerService } from 'src/app/services/customer.service';
@@ -14,11 +17,20 @@ import { AddVehicleComponent } from '../add-vehicle/add-vehicle.component';
 })
 export class ViewVehicleComponent implements OnInit {
 
-  vehicle: Vehicle[];
+  vehicle: Vehicle[]=[];
   selectedVehicle: Vehicle;
   dtOptions: any;
   selectedImage: string;
 
+  vehiclePriceRangeForm = new FormGroup({
+    vehicle_id:new FormControl(),
+    name:new FormControl(),
+    amount:new FormControl()
+  });
+
+  selectVehicles = new FormControl('');
+  filteredVehicles: Observable<Vehicle[]>;
+  
   @ViewChild(AddVehicleComponent) addVehicle: AddVehicleComponent;
 
   constructor(private _vehicleService: VehicleService, public _common: CommonService, public _location: LocationService, public _owner: VehicleOwnerService) { }
@@ -27,11 +39,21 @@ export class ViewVehicleComponent implements OnInit {
     this._vehicleService.getAllVehicles().subscribe(data => {
       if (!data.isError) {
         this.vehicle = data.data;
+        this.filteredVehicles = this.selectVehicles.valueChanges.pipe(
+          startWith(''),
+          map(value => this._filterOwner(value || '')),
+        );
         this.dtOptions = this._common.getDataTableSettings();
       }
     })
   }
+  setPrice(){
 
+  }
+
+  clearPayForm(){
+
+  }
   deleteVehicle(id: string) {
     this._vehicleService.deleteVehicle(id).subscribe(data => {
       if (!data.isError) {
@@ -65,5 +87,13 @@ export class ViewVehicleComponent implements OnInit {
         this._common.openProfileDialog(data.data[0])
       }
     })
+  }
+  private _filterOwner(value: string) {
+    const filterValue = this._normalizeValue(value);
+    return this.vehicle.filter(v => this._normalizeValue(v.brand + ' ' + v.number_plate).includes(filterValue));
+  }
+
+  private _normalizeValue(value: string): string {
+    return value.toLowerCase().replace(/\s/g, '');
   }
 }
