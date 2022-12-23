@@ -30,4 +30,10 @@ export class VehicleService {
     let url=this.path+`vehicle/${id}`;
     return this.http.delete<any>(url);
   }
+  
+  createPriceRange(value:any){
+    let url=this.path+`vehicle-price-range`;
+    return this.http.post<any>(url,value);
+
+  }
 }

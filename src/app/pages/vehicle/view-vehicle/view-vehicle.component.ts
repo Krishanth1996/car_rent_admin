@@ -17,7 +17,7 @@ import { AddVehicleComponent } from '../add-vehicle/add-vehicle.component';
 })
 export class ViewVehicleComponent implements OnInit {
 
-  vehicle: Vehicle[]=[];
+  vehicle: Vehicle[]
   selectedVehicle: Vehicle;
   dtOptions: any;
   selectedImage: string;
@@ -25,10 +25,14 @@ export class ViewVehicleComponent implements OnInit {
   vehiclePriceRangeForm = new FormGroup({
     vehicle_id:new FormControl(),
     name:new FormControl(),
-    amount:new FormControl()
+    amount:new FormControl(),
+    is_mandatory:new FormControl(),
+    is_per_day:new FormControl()
   });
 
   selectVehicles = new FormControl('');
+  is_mandatorys= new FormControl('');
+  is_per_days = new FormControl('');
   filteredVehicles: Observable<Vehicle[]>;
   
   @ViewChild(AddVehicleComponent) addVehicle: AddVehicleComponent;
@@ -48,7 +52,14 @@ export class ViewVehicleComponent implements OnInit {
     })
   }
   setPrice(){
-
+    debugger
+    this.vehiclePriceRangeForm.patchValue({
+      vehicle_id:this.selectVehicles.value,
+    })
+    this._vehicleService.createPriceRange(this.vehiclePriceRangeForm.value).subscribe(data=>{
+      console.log(data);
+      
+    })
   }
 
   clearPayForm(){
@@ -60,6 +71,20 @@ export class ViewVehicleComponent implements OnInit {
         this.vehicle = this.vehicle.filter(vehicle => vehicle.vehicle_id != id)
       }
     })
+  }
+
+  getValue(e:any,type:string){
+    if(type=='m'){
+      debugger
+      this.vehiclePriceRangeForm.patchValue({
+        is_mandatory: this.is_mandatorys.value
+      })
+    }else{
+      this.vehiclePriceRangeForm.patchValue({
+        is_per_day: this.is_per_days.value
+      })
+    }
+    
   }
 
   selectVehicle(vehicle: Vehicle) {

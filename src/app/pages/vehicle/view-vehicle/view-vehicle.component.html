@@ -4,7 +4,7 @@
 
   <form class="form-group" [formGroup]="vehiclePriceRangeForm">
     <div class="row p-2">
-      <div class="col-xs-12 col-sm-4 col-xl-4">
+      <div class="col-xs-12 col-sm-3 col-xl-3">
         <div class="form-group">
           <label for="vehicleOwner">Vehicle</label>
           <!-- <input type="number" class="form-control " id="contact_mobile" formControlName="contact_mobile" placeholder="Contact Number" > -->
@@ -17,18 +17,28 @@
           </mat-autocomplete>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-4 col-xl-4">
+      <div class="col-xs-12 col-sm-3 col-xl-3">
         <div class="form-group">
           <label for="name">Tag</label>
           <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name">
         </div>
       </div>
-      <div class="col-xs-12 col-sm-4 col-xl-4">
+      <div class="col-xs-12 col-sm-3 col-xl-3">
         <div class="form-group">
           <label for="amount">Amount</label>
           <input type="number" class="form-control" id="amount" formControlName="amount"
             placeholder="Amount">
         </div>
+      </div>
+      <div class="col-xs-12 col-sm-3 col-xl-3">
+        <select class="form-select" aria-label="Default select example" formControlName="is_mandatorys" (change)="getValue($event,'m')">
+          <option value="true" selected>True</option>
+          <option value="false" >False</option>
+        </select>
+        <select class="form-select" aria-label="Default select example" formControlName="is_per_days" (change)="getValue($event,'d')">
+          <option value="true" >True</option>
+          <option value="false" >False</option>
+        </select>
       </div>
     </div>
   
@@ -36,7 +46,7 @@
     <div class="row p-2">
       <div class="col-xs-12 col-sm-12 col-xl-12 text-center" style="display: flex;justify-content: space-evenly;">
         <button (click)="setPrice()" type="submit"
-          class="btn btn-success btn-sm btn-block">Add Vehicle</button>
+          class="btn btn-success btn-sm btn-block">Add Price Range</button>
         <button  (click)="clearPayForm()" class="btn btn-danger btn-sm btn-block">Clear</button>
       </div>
     </div>
